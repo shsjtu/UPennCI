@@ -22,3 +22,25 @@ $ cordova run android --device
 Also do not forget to turn on USB debugging on device.
 ##### iOS:
 Coming soon.
+
+
+#### 5. Send GCM from server side:
+Just issue a http POST:
+```
+https://fcm.googleapis.com/fcm/send
+Content-Type:application/json
+Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
+```
+Body json:
+```json
+{
+  "to" : /topics/all",
+  "priority" : "high",
+  "notification" : {
+    "body" : "Your message",
+    "title" : "Your title",
+  }
+}
+```
+For the "Authorization:key=AI....5aA", please use the cloud messaging **Legacy Server key**, which can be found:
+https://console.firebase.google.com/project/upennci-d9b1e/settings/cloudmessaging
