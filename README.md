@@ -34,7 +34,7 @@ Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
 Body json:
 ```json
 {
-  "to" : /topics/all",
+  "to" : "/topics/all",
   "priority" : "high",
   "notification" : {
     "body" : "Your message",
