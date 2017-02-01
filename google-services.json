@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "379984584380",
+    "firebase_url": "https://upennci-d9b1e.firebaseio.com",
+    "project_id": "upennci-d9b1e",
+    "storage_bucket": "upennci-d9b1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379984584380:android:fc5399f2fc0acd2b",
+        "android_client_info": {
+          "package_name": "com.upenn.sil.ci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379984584380-7p4r8f52b3k3fkecsjp9fj0eh14urp97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXNLpH8-Wfjh9bA8EJ_a6W-7_myi7o4uA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -27,7 +27,33 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.receivedEvent('deviceready');
+      console.log('Received Device Ready Event');
+      console.log('Calling setup push');
+      this.receivedEvent('deviceready');
+      app.setupPush();
+    },
+
+    setupPush: function() {
+      function openBrower() {
+        var ref = cordova.InAppBrowser.open('http://sil.asc.upenn.edu/cigame/signup/direct-to-play/phone-test', '_blank', 'location=no,toolbar=no');
+      }
+      FCMPlugin.onTokenRefresh(function(token){
+          console.log('Token refreshed');
+      });
+      FCMPlugin.getToken(function(token){
+          console.log('Got token');
+          openBrower();
+      });
+      FCMPlugin.onNotification(function(data){
+        if(data.wasTapped){
+          openBrower();
+          //Notification was received on device tray and tapped by the user.
+          console.log('Notification was received on device tray and tapped by the user');
+        }else{
+          //Notification was received in foreground. Maybe the user needs to be notified.
+          console.log('Notification was received in foreground. Maybe the user needs to be notified');
+        }
+      });
     },
 
     // Update DOM on a Received Event
