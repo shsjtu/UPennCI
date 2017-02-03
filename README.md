@@ -40,6 +40,7 @@ Body json:
   "notification" : {
     "body" : "Your message",
     "title" : "Your title",
+    "click_action":"FCM_PLUGIN_ACTIVITY"
   },
   "data": {
     "event": "link",
