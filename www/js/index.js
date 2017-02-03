@@ -34,22 +34,53 @@ var app = {
     },
 
     setupPush: function() {
-      function openBrower() {
-        var ref = cordova.InAppBrowser.open('http://sil.asc.upenn.edu/cigame/signup/direct-to-play/phone-test', '_blank', 'location=no,toolbar=no');
+      var customURL = 'http://sil.asc.upenn.edu/cigame/signup/direct-to-play/phone-test';
+
+      function openBrowser(url) {
+        var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no,toolbar=no');
       }
+
+      function dialogCallback(buttonIndex) {
+        if(buttonIndex == 1) { //YES
+          openBrowser(customURL);
+        }
+      }
+
       FCMPlugin.onTokenRefresh(function(token){
-          console.log('Token refreshed');
+          console.log('Token refreshed: \n' + token);
+          openBrowser(customURL);
+          //Send the token to server here
       });
+
       FCMPlugin.getToken(function(token){
-          console.log('Got token');
-          openBrower();
+          console.log('Got token: \n' + token);
+          openBrowser(customURL);
+          //Send the token to server here
       });
+
       FCMPlugin.onNotification(function(data){
+        console.log(data);
         if(data.wasTapped){
-          openBrower();
+          if (data.event == 'link' && typeof data.content == 'string' ) {
+            customURL = data.content;
+            openBrowser(data.content);
+          } else {
+            alert('undefined event')
+          }
           //Notification was received on device tray and tapped by the user.
           console.log('Notification was received on device tray and tapped by the user');
         }else{
+          if (data.event == 'link' && typeof data.content == 'string' ) {
+            customURL = data.content;
+            navigator.notification.confirm(
+              'Do you want to join?',
+              dialogCallback,
+              'A new game is about to start',
+              ['Yes', 'No']
+            );
+          } else {
+            alert('undefined event');
+          }
           //Notification was received in foreground. Maybe the user needs to be notified.
           console.log('Notification was received in foreground. Maybe the user needs to be notified');
         }
