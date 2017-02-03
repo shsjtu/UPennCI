@@ -1,4 +1,5 @@
 # UPennCI
+##### cordova version: 6.4.0
 #### 1. Check out the code base at:
 ```
 https://github.com/shsjtu/UPennCI.git
@@ -34,11 +35,15 @@ Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
 Body json:
 ```json
 {
-  "to" : "/topics/all",
+  "to" : "eEMdSoKiFAU:AP...vD",
   "priority" : "high",
   "notification" : {
     "body" : "Your message",
     "title" : "Your title",
+  },
+  "data": {
+    "event": "link",
+    "content": "http://sil.asc.upenn.edu"
   }
 }
 ```
