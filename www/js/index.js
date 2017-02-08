@@ -34,7 +34,7 @@ var app = {
     },
 
     setupPush: function() {
-      var customURL = 'http://sil.asc.upenn.edu/cigame/signup/direct-to-play/phone-test';
+      var customURL = 'http://sildev.asc.upenn.edu/cigame/signup/direct-to-play/phone-test';
 
       function openBrowser(url) {
         var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no,toolbar=no');
